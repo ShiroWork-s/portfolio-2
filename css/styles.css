@@ -1,0 +1,234 @@
+body {
+margin: 0;
+font-family: Arial, sans-serif;
+color: white;
+background-image: url("../images/sky.jpg");
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+font-size: clamp(14px, 1.2vw, 18px);
+}
+
+.page-grid {
+display: grid;
+grid-template-columns: 1fr;
+grid-template-areas:
+"hero"
+"main"
+"sidebar"
+"footer";
+gap: 20px;
+padding: 12px;
+}
+
+.hero {
+grid-area: hero;
+min-height: 100vh;
+background-image: url("../images/sky.jpg");
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+border: 2px solid #cfcfcf;
+border-radius: 24px;
+padding: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.main-content { grid-area: main; }
+.sidebar { grid-area: sidebar; }
+
+footer {
+grid-area: footer;
+text-align: center;
+background-color: #1e1e1e;
+padding: 40px 20px;
+}
+
+.navbar {
+position: static;
+background: #1e1e1e;
+padding: 15px 20px;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+align-items: center;
+max-width: 100%;
+margin: 0 auto;
+}
+
+.navlinks {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px;
+}
+
+.navlinks a {
+text-decoration: none;
+color: #ddd;
+padding: 10px 16px;
+border-radius: 12px;
+background: #2a2a2a;
+}
+
+.navlinks a:hover {
+background: #FFD2C7;
+color: black;
+}
+
+.hero-text {
+text-align: center;
+margin-top: 60px;
+padding: 25px 40px;
+border-radius: 16px;
+background-color: rgba(255,210,199,0.3);
+}
+
+.hero-text h2 {
+font-size: clamp(32px, 8vw, 72px);
+font-weight: 800;
+color: #FFD2C7;
+text-shadow:
+1px 1px 0 #FFE2E8,
+-1px 1px 0 #FFE2E8,
+1px -1px 0 #FFE2E8,
+-1px -1px 0 #FFE2E8,
+0 6px 20px rgba(0,0,0,0.35);
+}
+
+.hero-text h3 {
+font-size: clamp(16px, 3vw, 28px);
+}
+
+section {
+background: #1f1f1f;
+margin: 40px auto;
+padding: 40px;
+border-radius: 24px;
+max-width: 1100px;
+text-align: center;
+}
+
+/* ===== CARD SYSTEM (FIXED, NO CONFLICTS) ===== */
+.card-row {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 24px;
+
+/* container query support */
+container-type: inline-size;
+container-name: cards;
+}
+
+figure {
+flex: 1 1 240px;
+margin: 20px;
+text-align: center;
+}
+
+figure img {
+width: 100%;
+max-width: 320px;
+height: auto;
+display: block;
+margin: 0 auto;
+border-radius: 12px;
+object-fit: cover;
+}
+
+figcaption {
+font-size: clamp(12px, 1.5vw, 16px);
+margin-top: 8px;
+}
+
+/* container query (safe + simple) */
+@container cards (max-width: 500px) {
+figure {
+flex: 1 1 100%;
+}
+figure img {
+max-width: 100%;
+}
+}
+
+/* table */
+.menu-table-section {
+overflow-x: auto;
+}
+
+/* form */
+.reservation-form {
+display: flex;
+flex-direction: column;
+gap: 10px;
+text-align: left;
+}
+
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea,
+.reservation-form button {
+padding: 12px;
+border: none;
+border-radius: 8px;
+font-size: 16px;
+}
+
+.reservation-form button {
+background: linear-gradient(90deg, #FFD2C7, #e6b8aa);
+color: black;
+cursor: pointer;
+font-weight: bold;
+margin-top: 10px;
+border-radius: 8px;
+transition: 0.2s ease;
+}
+
+.reservation-form button:hover {
+background: linear-gradient(90deg, #ffe2da, #c38573);
+}
+
+.reservation-form button:active {
+transform: scale(0.98);
+}
+
+/* responsive tweaks */
+@media (min-width: 600px) {
+.page-grid { padding: 20px; }
+
+.reservation-form {
+max-width: 600px;
+margin: 0 auto;
+}
+}
+
+@media (min-width: 900px) {
+.page-grid {
+grid-template-columns: 2fr 1fr;
+grid-template-areas:
+"hero hero"
+"main sidebar"
+"footer footer";
+}
+
+.navbar {
+flex-direction: row;
+}
+}
+
+@media (min-width: 1200px) {
+.page-grid {
+max-width: 1400px;
+margin: 0 auto;
+}
+
+section {
+padding: 50px;
+}
+}
